@@ -1,0 +1,63 @@
+{
+  "name": "rolldown-plugin-relay",
+  "version": "0.1.0",
+  "description": "Rolldown/Vite 8 plugin to replace babel-plugin-relay",
+  "license": "MIT",
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsdown",
+    "lint": "eslint . && tsc --noEmit",
+    "test": "vitest run",
+    "prepublishOnly": "pnpm run lint && pnpm run test && pnpm run build"
+  },
+  "keywords": [
+    "rolldown",
+    "vite",
+    "relay",
+    "graphql",
+    "babel-plugin-relay"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/girvo/rolldown-plugin-relay"
+  },
+  "peerDependencies": {
+    "graphql": ">=15",
+    "rolldown": ">=1.0.0-beta.0"
+  },
+  "dependencies": {
+    "magic-string": "^0.30.17",
+    "oxc-parser": "^0.101.0",
+    "oxc-walker": "^0.7.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.35.0",
+    "@oxc-project/types": "0.101.0",
+    "@types/node": "^25.5.0",
+    "eslint": "^9.35.0",
+    "graphql": "^16.11.0",
+    "rolldown": "1.0.0-beta.53",
+    "tsdown": "^0.21.2",
+    "typescript": "^5.9.2",
+    "typescript-eslint": "^8.43.0",
+    "vitest": "^3.2.4"
+  }
+}

@@ -1,0 +1,84 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`babel-plugin-relay dev mode parity > dev mode — custom codegenCommand 1`] = `
+"import _TestFrag from './__generated__/TestFrag.graphql';
+(_TestFrag.hash !== null && _TestFrag.hash !== "0bb6b7b29bc3e910921551c4ff5b6757" && console.error("The definition of 'TestFrag' appears to have changed. Run \`relay-build\` to update the generated files to receive the expected data."), _TestFrag)"
+`;
+
+exports[`babel-plugin-relay dev mode parity > dev mode — hash check with comma expression 1`] = `
+"import _TestFrag from './__generated__/TestFrag.graphql';
+(_TestFrag.hash !== null && _TestFrag.hash !== "0bb6b7b29bc3e910921551c4ff5b6757" && console.error("The definition of 'TestFrag' appears to have changed. Run \`relay-compiler\` to update the generated files to receive the expected data."), _TestFrag)"
+`;
+
+exports[`babel-plugin-relay dev mode parity > dev mode — isDevVariableName ternary 1`] = `
+"import _TestFrag from './__generated__/TestFrag.graphql';
+IS_DEV ? (_TestFrag.hash !== null && _TestFrag.hash !== "0bb6b7b29bc3e910921551c4ff5b6757" && console.error("The definition of 'TestFrag' appears to have changed. Run \`relay-compiler\` to update the generated files to receive the expected data."), _TestFrag) : _TestFrag"
+`;
+
+exports[`babel-plugin-relay dev mode parity > production mode — no hash check 1`] = `
+"import _TestFrag from './__generated__/TestFrag.graphql';
+_TestFrag"
+`;
+
+exports[`babel-plugin-relay fixture parity > fragment.txt — production ESM 1`] = `
+"import _TestFragment from './__generated__/TestFragment.graphql';
+'use strict';
+
+const {graphql} = require('relay-runtime');
+
+const testFragment = _TestFragment;"
+`;
+
+exports[`babel-plugin-relay fixture parity > memoize-inner-scope.txt — graphql tag inside JSX prop 1`] = `
+"import _ExampleQuery from './__generated__/ExampleQuery.graphql';
+'use strict';
+
+function SomeTopLevelView() {
+  const _graphql = 'unrelated';
+
+  return (
+    <View>
+      <QueryRenderer
+        environment={RelayEnvironment}
+        query={_ExampleQuery}
+        variables={{id: '12345'}}
+      />
+    </View>
+  );
+}"
+`;
+
+exports[`babel-plugin-relay fixture parity > mutation.txt — production ESM 1`] = `
+"import _TestMutation from './__generated__/TestMutation.graphql';
+'use strict';
+
+const {graphql} = require('relay-runtime');
+
+const testMutation = _TestMutation;"
+`;
+
+exports[`babel-plugin-relay fixture parity > query.txt — production ESM 1`] = `
+"import _TestQuery from './__generated__/TestQuery.graphql';
+'use strict';
+
+const {graphql} = require('relay-runtime');
+
+const testQuery = _TestQuery;"
+`;
+
+exports[`babel-plugin-relay variant parity > artifact directory — path from root-adjacent file 1`] = `
+"import _TestFrag from './test/artifacts/TestFrag.graphql';
+(_TestFrag.hash !== null && _TestFrag.hash !== "0bb6b7b29bc3e910921551c4ff5b6757" && console.error("The definition of 'TestFrag' appears to have changed. Run \`relay-compiler\` to update the generated files to receive the expected data."), _TestFrag)"
+`;
+
+exports[`babel-plugin-relay variant parity > artifact directory — relative path from file to artifact dir 1`] = `
+"import _TestFragment from '../test/artifacts/TestFragment.graphql';
+const {graphql} = require('relay-runtime');
+const testFragment = _TestFragment;"
+`;
+
+exports[`babel-plugin-relay variant parity > haste mode — bare filename imports 1`] = `
+"import _TestFragment from 'TestFragment.graphql';
+const {graphql} = require('relay-runtime');
+const testFragment = _TestFragment;"
+`;

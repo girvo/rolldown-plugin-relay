@@ -3,28 +3,7 @@
  * https://github.com/facebook/relay/tree/main/packages/babel-plugin-relay/__tests__
  */
 import { describe, it, expect } from 'vitest'
-import { parseAst } from 'rolldown/parseAst'
-import relay from './index'
-
-function getTransformHandler(options?: Parameters<typeof relay>[0]) {
-  const plugin = relay(options)
-  const transform = plugin.transform as (
-    code: string,
-    id: string,
-    meta: { ast?: ReturnType<typeof parseAst> },
-  ) => { code: string; map: unknown } | null
-  return (code: string, id = '/src/Component.tsx') => {
-    const lang = id.endsWith('.tsx')
-      ? 'tsx'
-      : id.endsWith('.ts')
-        ? 'ts'
-        : id.endsWith('.jsx')
-          ? 'jsx'
-          : 'js'
-    const ast = parseAst(code, { lang }, id)
-    return transform.call({}, code, id, { ast })
-  }
-}
+import { getTransformHandler } from './test-utils'
 
 describe('babel-plugin-relay fixture parity', () => {
   // https://github.com/facebook/relay/blob/main/packages/babel-plugin-relay/__tests__/fixtures/fragment.txt

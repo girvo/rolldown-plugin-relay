@@ -42,6 +42,7 @@ All options are optional. Defaults match `babel-plugin-relay`
 | `eagerEsModules` | `boolean` | `true` | Generates `import` declarations. When `false`, generates memoized `require()` calls instead |
 | `jsModuleFormat` | `"commonjs" \| "haste"` | `undefined` | When `"haste"`, uses bare filenames for artifact imports |
 | `codegenCommand` | `string` | `"relay-compiler"` | Command name shown in staleness warning messages |
+| `legacyFiltering` | `boolean` | `false` | Enable handler-side filtering for older Rollup/Vite versions that don't support [hook filters](https://rolldown.rs/apis/plugin-api/hook-filters) |
 
 Note: `eagerEsModules` defaults to `true`, same as the Babel plugin as of ~v19
 

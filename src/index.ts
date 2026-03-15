@@ -31,7 +31,12 @@ function langFromId(id: string): 'js' | 'jsx' | 'ts' | 'tsx' {
   return 'js'
 }
 
-export default function relay(options?: RelayPluginOptions): Plugin {
+// Vite needs `enforce` to run before vite:oxc, Rolldown ignores it
+interface VitePluginCompat {
+  enforce: 'pre'
+}
+
+export default function relay(options?: RelayPluginOptions): Plugin & VitePluginCompat {
   const isDev = options?.isDev ?? true
   const isDevVariableName = options?.isDevVariableName
   const eagerEsModules = options?.eagerEsModules ?? true
@@ -41,6 +46,7 @@ export default function relay(options?: RelayPluginOptions): Plugin {
 
   return {
     name: 'rolldown-plugin-relay',
+    enforce: 'pre',
     transform(code, id, meta) {
       if (!/\.[jt]sx?$/.test(id)) return null
       if (!code.includes('graphql`')) return null

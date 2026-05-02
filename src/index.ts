@@ -1,9 +1,10 @@
 import { createHash } from 'crypto'
 import { dirname, join, relative, resolve } from 'path'
-import { parse as parseGraphQL, print } from 'graphql'
+import { parse as parseGraphQL } from 'graphql'
 import MagicString from 'magic-string'
 import { parseSync } from 'oxc-parser'
 import { walk } from 'oxc-walker'
+import { printRelayAst } from './print-relay-ast'
 import type { Plugin } from 'rolldown'
 import type { Program, TaggedTemplateExpression } from '@oxc-project/types'
 
@@ -138,7 +139,7 @@ export default function relay(options?: RelayPluginOptions): Plugin & VitePlugin
           }
 
           const hash = createHash('md5')
-            .update(print(definition), 'utf8')
+            .update(printRelayAst(definition), 'utf8')
             .digest('hex')
           const errorMsg = `The definition of '${definitionName}' appears to have changed. Run \`${codegenCommand}\` to update the generated files to receive the expected data.`
           const hashCheck = `${importName}.hash !== null && ${importName}.hash !== "${hash}" && console.error("${errorMsg}")`

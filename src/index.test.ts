@@ -1,12 +1,13 @@
 import { describe, it, expect } from 'vitest'
 import { createHash } from 'crypto'
-import { parse as parseGraphQL, print } from 'graphql'
+import { parse as parseGraphQL } from 'graphql'
 import { getTransformHandler } from './test-utils'
+import { printRelayAst } from './print-relay-ast'
 
 function md5(graphqlSource: string): string {
   const doc = parseGraphQL(graphqlSource)
   return createHash('md5')
-    .update(print(doc.definitions[0]), 'utf8')
+    .update(printRelayAst(doc.definitions[0]), 'utf8')
     .digest('hex')
 }
 

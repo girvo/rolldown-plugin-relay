@@ -1,6 +1,6 @@
 {
   "name": "rolldown-plugin-relay",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Rolldown/Vite 8 plugin to replace babel-plugin-relay",
   "license": "MIT",
   "type": "module",
